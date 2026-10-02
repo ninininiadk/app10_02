@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hello World</title>
+<style>
+  :root {
+    --bg: #f3f6fb;
+    --fg: #14213d;
+    --muted: #5b6b8a;
+    --accent: #2a5bd7;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1626; --fg: #eef2fb; --muted: #94a3c4; --accent: #7aa2ff;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1626; --fg: #eef2fb; --muted: #94a3c4; --accent: #7aa2ff;
+  }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Helvetica Neue", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  main { padding: 24px; }
+  h1 {
+    font-size: clamp(2.5rem, 12vw, 6rem);
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+  }
+  p { margin: 0 0 24px; color: var(--muted); font-size: 1.1rem; }
+  button {
+    font: inherit;
+    padding: 10px 22px;
+    border: 2px solid var(--accent);
+    background: transparent;
+    color: var(--accent);
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  button:hover { background: var(--accent); color: var(--bg); }
+  button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+</style>
+</head>
+<body>
+<main>
+  <h1 id="title">Hello, World!</h1>
+  <p>這是我的第一個 HTML 網頁。</p>
+  <button id="btn">打個招呼</button>
+</main>
+<script>
+  var greetings = ["Hello, World!", "你好，世界！", "こんにちは、世界！", "Hola, Mundo!"];
+  var i = 0;
+  document.getElementById("btn").addEventListener("click", function () {
+    i = (i + 1) % greetings.length;
+    document.getElementById("title").textContent = greetings[i];
+  });
+</script>
+</body>
+</html>
